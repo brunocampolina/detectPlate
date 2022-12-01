@@ -1,8 +1,3 @@
-#######################################################
-#     Detecção de Placas atraves de contornos  HD     #
-#                       by AY7                        #
-#######################################################
-
 import pytesseract
 import matplotlib.pyplot as plt
 import cv2
@@ -123,13 +118,7 @@ def preProcessamentoRoi():
                 # segmenta a placa da imagem
                 roi = img_roi[y:y + alt, x:x + lar]
                 cv2.imwrite("output/roi-retangulo.png", roi)
-    #placa_gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    #cv2.imwrite("output/placa-gray.png", placa_gray)
-    #placa_suavizada = cv2.blur(placa_gray, (1, 1))
-    #cv2.imwrite("output/placa-suavizada.png", placa_suavizada)
-    #_, placa_limiarizada = cv2.threshold(placa_gray, 70, 255, cv2.THRESH_BINARY)
-    #cv2.imwrite("output/placa-limiarizada.png", cv2.resize(placa_limiarizada, (800,260)))
-    #cv2.imwrite("output/roi-ocr.png",  cv2.resize(placa_limiarizada, (800,260)))
+   
     img_roi = cv2.imread("output/roi-retangulo.png")
     img = cv2.resize(img_roi, None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
 
@@ -161,9 +150,7 @@ def reconhecimentoOCR():
 
 
 if __name__ == "__main__":
-    #source = "resource/fiesta2.mp4"
     source = "resource/clio3 (1).mp4"
-    #buscaRetanguloPlaca(source)
 
     preProcessamentoRoi()
 
